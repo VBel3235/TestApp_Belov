@@ -12,6 +12,13 @@
 		F554C2A027044436000F94A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F554C29F27044436000F94A0 /* Assets.xcassets */; };
 		F554C2A327044436000F94A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F554C2A127044436000F94A0 /* LaunchScreen.storyboard */; };
 		F554C2AB27044903000F94A0 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2AA27044903000F94A0 /* PhotosViewController.swift */; };
+		F554C2B527045624000F94A0 /* PhotoImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2B427045624000F94A0 /* PhotoImageView.swift */; };
+		F554C2B727045795000F94A0 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2B627045795000F94A0 /* PhotoCollectionViewCell.swift */; };
+		F554C2B927045F69000F94A0 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2B827045F69000F94A0 /* UIHelper.swift */; };
+		F554C2BB2704601E000F94A0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2BA2704601E000F94A0 /* NetworkManager.swift */; };
+		F554C2BD27046034000F94A0 /* VBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2BC27046034000F94A0 /* VBError.swift */; };
+		F554C2BF27046202000F94A0 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2BE27046202000F94A0 /* Image.swift */; };
+		F554C2C227046A40000F94A0 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F554C2C127046A40000F94A0 /* LoadingViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +29,13 @@
 		F554C2A227044436000F94A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F554C2A427044436000F94A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F554C2AA27044903000F94A0 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
+		F554C2B427045624000F94A0 /* PhotoImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoImageView.swift; sourceTree = "<group>"; };
+		F554C2B627045795000F94A0 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		F554C2B827045F69000F94A0 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		F554C2BA2704601E000F94A0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		F554C2BC27046034000F94A0 /* VBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VBError.swift; sourceTree = "<group>"; };
+		F554C2BE27046202000F94A0 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		F554C2C127046A40000F94A0 /* LoadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +68,93 @@
 		F554C2952704442E000F94A0 /* TestApp_Belov */ = {
 			isa = PBXGroup;
 			children = (
-				F554C2962704442F000F94A0 /* AppDelegate.swift */,
-				F554C2982704442F000F94A0 /* SceneDelegate.swift */,
-				F554C2AA27044903000F94A0 /* PhotosViewController.swift */,
-				F554C29F27044436000F94A0 /* Assets.xcassets */,
-				F554C2A127044436000F94A0 /* LaunchScreen.storyboard */,
+				F554C2B127045587000F94A0 /* Support */,
+				F554C2B02704554C000F94A0 /* Model */,
+				F554C2AF2704553D000F94A0 /* Utilities */,
+				F554C2AE2704551C000F94A0 /* Managers */,
+				F554C2AD27045512000F94A0 /* Custom Views */,
+				F554C2AC27045508000F94A0 /* Screens */,
 				F554C2A427044436000F94A0 /* Info.plist */,
 			);
 			path = TestApp_Belov;
+			sourceTree = "<group>";
+		};
+		F554C2AC27045508000F94A0 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2AA27044903000F94A0 /* PhotosViewController.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F554C2AD27045512000F94A0 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2C027046A2A000F94A0 /* ViewControllers */,
+				F554C2B3270455BE000F94A0 /* ImageViews */,
+				F554C2B2270455B5000F94A0 /* Cells */,
+			);
+			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		F554C2AE2704551C000F94A0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2BA2704601E000F94A0 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F554C2AF2704553D000F94A0 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2B827045F69000F94A0 /* UIHelper.swift */,
+				F554C2BC27046034000F94A0 /* VBError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F554C2B02704554C000F94A0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2BE27046202000F94A0 /* Image.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F554C2B127045587000F94A0 /* Support */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2962704442F000F94A0 /* AppDelegate.swift */,
+				F554C2982704442F000F94A0 /* SceneDelegate.swift */,
+				F554C29F27044436000F94A0 /* Assets.xcassets */,
+				F554C2A127044436000F94A0 /* LaunchScreen.storyboard */,
+			);
+			path = Support;
+			sourceTree = "<group>";
+		};
+		F554C2B2270455B5000F94A0 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2B627045795000F94A0 /* PhotoCollectionViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		F554C2B3270455BE000F94A0 /* ImageViews */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2B427045624000F94A0 /* PhotoImageView.swift */,
+			);
+			path = ImageViews;
+			sourceTree = "<group>";
+		};
+		F554C2C027046A2A000F94A0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				F554C2C127046A40000F94A0 /* LoadingViewController.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,8 +228,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F554C2AB27044903000F94A0 /* PhotosViewController.swift in Sources */,
+				F554C2BF27046202000F94A0 /* Image.swift in Sources */,
+				F554C2B727045795000F94A0 /* PhotoCollectionViewCell.swift in Sources */,
+				F554C2BD27046034000F94A0 /* VBError.swift in Sources */,
 				F554C2972704442F000F94A0 /* AppDelegate.swift in Sources */,
+				F554C2BB2704601E000F94A0 /* NetworkManager.swift in Sources */,
 				F554C2992704442F000F94A0 /* SceneDelegate.swift in Sources */,
+				F554C2C227046A40000F94A0 /* LoadingViewController.swift in Sources */,
+				F554C2B527045624000F94A0 /* PhotoImageView.swift in Sources */,
+				F554C2B927045F69000F94A0 /* UIHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
