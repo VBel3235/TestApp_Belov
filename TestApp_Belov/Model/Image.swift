@@ -16,9 +16,9 @@ struct Image: Codable, Hashable {
     var hits: [Hit]
 
     enum CodingKeys: String, CodingKey {
-        case total = "total"
-        case totalHits = "totalHits"
-        case hits = "hits"
+        case total              = "total"
+        case totalHits          = "totalHits"
+        case hits               = "hits"
     }
 }
 
@@ -48,27 +48,27 @@ struct Hit: Codable, Hashable {
     var userImageURL: String
 
     enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case pageURL = "pageURL"
-        case type = "type"
-        case tags = "tags"
-        case previewURL = "previewURL"
-        case previewWidth = "previewWidth"
-        case previewHeight = "previewHeight"
-        case webformatURL = "webformatURL"
-        case webformatWidth = "webformatWidth"
-        case webformatHeight = "webformatHeight"
-        case largeImageURL = "largeImageURL"
-        case imageWidth = "imageWidth"
-        case imageHeight = "imageHeight"
-        case imageSize = "imageSize"
-        case views = "views"
-        case downloads = "downloads"
-        case collections = "collections"
-        case likes = "likes"
-        case comments = "comments"
-        case userid = "user_id"
-        case user = "user"
-        case userImageURL = "userImageURL"
+        case id                     = "id"
+        case pageURL                = "pageURL"
+        case type                   = "type"
+        case tags                   = "tags"
+        case previewURL             = "previewURL"
+        case previewWidth           = "previewWidth"
+        case previewHeight          = "previewHeight"
+        case webformatURL           = "webformatURL"
+        case webformatWidth         = "webformatWidth"
+        case webformatHeight        = "webformatHeight"
+        case largeImageURL          = "largeImageURL"
+        case imageWidth             = "imageWidth"
+        case imageHeight            = "imageHeight"
+        case imageSize              = "imageSize"
+        case views                  = "views"
+        case downloads              = "downloads"
+        case collections            = "collections"
+        case likes                  = "likes"
+        case comments               = "comments"
+        case userid                 = "user_id"
+        case user                   = "user"
+        case userImageURL           = "userImageURL"
     }
 }
