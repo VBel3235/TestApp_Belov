@@ -17,6 +17,8 @@ class PhotosViewController: VBViewController {
     var images: [Hit] = []
     
     var collectionView: UICollectionView!
+    
+    
     var dataSource: UICollectionViewDiffableDataSource<Section, Hit>!
     
     var snapShot = NSDiffableDataSourceSnapshot<Section, Hit>()
@@ -66,7 +68,18 @@ class PhotosViewController: VBViewController {
         collectionView.isUserInteractionEnabled = true
         view.addSubview(collectionView)
         collectionView.delegate = self
+        collectionView.refreshControl = UIRefreshControl()
+        collectionView.refreshControl?.addTarget(self, action: #selector(refresh), for: .valueChanged)
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.reuseID)
+    }
+    
+    @objc func refresh(){
+        images.removeAll()
+        getPhotos()
+        
+        DispatchQueue.main.async {
+            self.collectionView.refreshControl?.endRefreshing()
+        }
     }
 
     func configureDataSource(){
@@ -79,8 +92,9 @@ class PhotosViewController: VBViewController {
     }
     
     func updateData(){
-        
-        snapShot.appendSections([.main])
+        if snapShot.numberOfSections == 0{
+            snapShot.appendSections([.main])
+        }
         snapShot.appendItems(images, toSection: .main)
         DispatchQueue.main.async {
             self.dataSource.apply(self.snapShot, animatingDifferences: true)
