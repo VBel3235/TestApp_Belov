@@ -11,7 +11,6 @@ class PhotosViewController: VBViewController {
     
     enum Section{
         case main
-        
     }
     
     var images: [Hit] = []
@@ -108,8 +107,6 @@ class PhotosViewController: VBViewController {
               snapShot.deleteItems([item])
             dataSource.apply(snapShot, animatingDifferences: true
                                , completion: nil)
-          
-       
         }
     
 }

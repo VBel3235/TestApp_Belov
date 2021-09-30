@@ -22,21 +22,6 @@ struct Image: Codable, Hashable {
     }
 }
 
-//
-// To read values from URLs:
-//
-//   let task = URLSession.shared.hitTask(with: url) { hit, response, error in
-//     if let hit = hit {
-//       ...
-//     }
-//   }
-//   task.resume()
-//
-// Hashable or Equatable:
-// The compiler will not be able to synthesize the implementation of Hashable or Equatable
-// for types that require the use of JSONAny, nor will the implementation of Hashable be
-// synthesized for types that have collections (such as arrays or dictionaries).
-
 // MARK: - Hit
 struct Hit: Codable, Hashable {
     var id: Int

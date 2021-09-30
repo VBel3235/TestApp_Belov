@@ -13,9 +13,8 @@ enum UIHelper{
     static func createFlowLayout(in view: UIView) -> UICollectionViewFlowLayout{
         let width                       = view.bounds.width
         let padding: CGFloat            = 10
-        let minimumItemSpacing: CGFloat = 10
         let availableWidth              = width
-        let itemWidth                   = availableWidth - (minimumItemSpacing * 2)
+        let itemWidth                   = availableWidth
         
         let flowLayout                  = UICollectionViewFlowLayout()
         flowLayout.sectionInset         = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
