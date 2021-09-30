@@ -22,7 +22,7 @@ class PhotoImageView: UIImageView {
     }
     
     func configure(){
-        contentMode         = .scaleAspectFit
+        contentMode         = .scaleAspectFill
         layer.cornerRadius  = 10
         clipsToBounds       = true
        

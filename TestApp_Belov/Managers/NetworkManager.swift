@@ -9,7 +9,7 @@ import UIKit
 
 class NetworkManager{
     static let shared = NetworkManager()
-    private let baseURL = "https://pixabay.com/api/?key=23615708-2d50648341163a57c2fba8ad0&q=pugs&image_type=photo&pretty=true"
+    private let baseURL = "https://pixabay.com/api/?key=23615708-2d50648341163a57c2fba8ad0&q=dogs&image_type=photo&pretty=true"
     
     let cache = NSCache<NSString, UIImage>()
     
@@ -75,5 +75,6 @@ class NetworkManager{
         task.resume()
     }
 }
+
 
 

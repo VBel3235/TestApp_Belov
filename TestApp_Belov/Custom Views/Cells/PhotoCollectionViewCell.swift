@@ -25,17 +25,25 @@ class PhotoCollectionViewCell: UICollectionViewCell {
     
     private func configure(){
         addSubview(photoImageView)
-        photoImageView.contentMode = .scaleAspectFit
-        photoImageView.sizeToFit()
+        
+        clipsToBounds = true
         let padding: CGFloat = 10
         
         NSLayoutConstraint.activate([
-            photoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding),
-            photoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
-            photoImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+            photoImageView.topAnchor.constraint(equalTo: topAnchor, constant: padding),
+            photoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: padding),
+            photoImageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -padding),
             photoImageView.heightAnchor.constraint(equalTo: photoImageView.widthAnchor)
         ])
     }
+    
+    override var isSelected: Bool{
+           didSet{
+               UIView.animate(withDuration: 0.3) {
+                   self.photoImageView.transform = self.isSelected ? CGAffineTransform(translationX: 400, y: 0) : CGAffineTransform.identity
+               }
+           }
+       }
     
     
     func set(image: Hit){

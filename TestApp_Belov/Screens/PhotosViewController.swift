@@ -18,6 +18,8 @@ class PhotosViewController: VBViewController {
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Hit>!
+    
+    var snapShot = NSDiffableDataSourceSnapshot<Section, Hit>()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,31 +52,20 @@ class PhotosViewController: VBViewController {
             case .success(let data):
                 self.images = data.hits
                 print(self.images)
-                self.updateDate()
+                self.updateData()
             case .failure(let error):
                 print(error.rawValue)
             }
         }
     }
     
-    func createFlowLayout() -> UICollectionViewFlowLayout{
-        let width                       = view.bounds.width
-        let padding: CGFloat            = 0
-        let minimumItemSpacing: CGFloat = 10
-        let availableWidth              = width - (padding * 2) - (minimumItemSpacing * 2)
-        let itemWidth                   = availableWidth / 2
-        
-        let flowLayout                  = UICollectionViewFlowLayout()
-        flowLayout.sectionInset         = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-        flowLayout.itemSize             = CGSize(width: itemWidth, height: itemWidth + 40)
-        
-        return flowLayout
-    }
+   
 
     func configureCollectionView(){
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: createFlowLayout())
+        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: UIHelper.createFlowLayout(in: view))
+        collectionView.isUserInteractionEnabled = true
         view.addSubview(collectionView)
-       
+        collectionView.delegate = self
         collectionView.register(PhotoCollectionViewCell.self, forCellWithReuseIdentifier: PhotoCollectionViewCell.reuseID)
     }
 
@@ -82,18 +73,42 @@ class PhotosViewController: VBViewController {
         dataSource = UICollectionViewDiffableDataSource<Section, Hit>(collectionView: collectionView, cellProvider: { collectionView, indexPath, image in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PhotoCollectionViewCell.reuseID, for: indexPath) as? PhotoCollectionViewCell
             cell?.set(image: image)
+            
             return cell
         })
     }
     
-    func updateDate(){
-        var snapShot = NSDiffableDataSourceSnapshot<Section, Hit>()
+    func updateData(){
+        
         snapShot.appendSections([.main])
         snapShot.appendItems(images, toSection: .main)
         DispatchQueue.main.async {
-            self.dataSource.apply(snapShot, animatingDifferences: true)
+            self.dataSource.apply(self.snapShot, animatingDifferences: true)
         }
-       
-        
     }
+        func deleteData(indexPath: IndexPath){
+            
+              guard let item = dataSource.itemIdentifier(for: indexPath) else {
+                  return
+              }
+              snapShot.deleteItems([item])
+            dataSource.apply(snapShot, animatingDifferences: true
+                               , completion: nil)
+          
+       
+        }
+    
+}
+
+extension PhotosViewController: UICollectionViewDelegate{
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.32){
+            self.deleteData(indexPath: indexPath)
+        }
+        
+}
+    func collectionView(_ collectionView: UICollectionView, canEditItemAt indexPath: IndexPath) -> Bool {
+        true
+    }
+    
 }
