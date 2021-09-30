@@ -21,8 +21,6 @@ class PhotoCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
-    
     private func configure(){
         addSubview(photoImageView)
         
