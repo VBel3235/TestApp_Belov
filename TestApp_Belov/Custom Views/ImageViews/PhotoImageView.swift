@@ -25,15 +25,20 @@ class PhotoImageView: UIImageView {
         contentMode         = .scaleAspectFill
         layer.cornerRadius  = 10
         clipsToBounds       = true
-       
         image               = placeholderImage
         translatesAutoresizingMaskIntoConstraints = false
-      
     }
     
     func downloadImage(fromURL url: String){
+        let cacheKey = NSString(string: url)
+        if let image = cache.object(forKey: NSString(string: cacheKey)){
+            self.image = image
+            return
+        }
         NetworkManager.shared.downloadImage(from: url) { [weak self] image in
             guard let self = self else { return }
+            guard let image = image else { return }
+            self.cache.setObject(image, forKey: cacheKey)
             DispatchQueue.main.async {
                 self.image = image
             }
