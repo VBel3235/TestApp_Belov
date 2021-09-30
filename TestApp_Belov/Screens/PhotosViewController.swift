@@ -105,8 +105,7 @@ class PhotosViewController: VBViewController {
                   return
               }
               snapShot.deleteItems([item])
-            dataSource.apply(snapShot, animatingDifferences: true
-                               , completion: nil)
+            dataSource.apply(snapShot, animatingDifferences: true , completion: nil)
         }
     
 }
